@@ -1,0 +1,51 @@
+Big data = data too large for 1 machine 
+
+1 machine = 2 numbers 
+
+1,2,3
+
+M1 -> 1,2  —— replicated ——— M3-> 1,2
+M2 -> 3																M4 -> 3
+
+Sum = M1(3), M2(3) = M1+m2= 6
+3 numbers- 4 machines!
+
+SHARDING 
+SUM = M1(3) + M2(5) + M3(4)
+1+2+3 = 12
+MapReduce -> Map the problem to individual machines, LET them solve, then REDUCE the result!
+
+M1 _> 1,2            M2-> 2,3          M3-> 3,1 
+
+3 numbers - 3 machines!
+
+
+Graph 
+
+X.  1.   2.  4
+Y.   2.  3.  5
+
+Y = x + 1
+
+Y = mx + c
+
+M = 1, c = 1
+
+-> Directed Acyclic Graph
+
+						  						OLTP(Py)				OLAP(PySpark)
+a=1				a=?               1								True
+b=2				b=? 					2								True
+c=a+b			c=?  					3								True
+print(c).   ???						“3”				execute()-> “3”
+
+OLTP-> eager evaluation (small data)
+OLAP-> LAZY evaluation (big data)
+
+Small- SQL, MySQL, Postgre, Transactional DBs
+
+Big- Hadoop (sharding, MapReduce) [DISK based],
+			Spark (MapReduce ++++) [In Memory]
+				[ALL calculation happens inside RAM]!
+
+Replication_factor-> 3
